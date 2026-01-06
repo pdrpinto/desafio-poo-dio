@@ -1,6 +1,7 @@
 import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,8 +28,7 @@ public class Main {
         bootcamp.getConteudos().add(curso2);
         bootcamp.getConteudos().add(mentoria1);
 
-        Dev dev1 = new Dev();
-        dev1.setNome("Pedro");
+        Dev dev1 = new Dev("Pedro");
         dev1.inscreverBootcamp(bootcamp);
         System.out.println("Conteudos inscritos: "+ dev1.getConteudosInscritos());
         dev1.progredir();
@@ -38,8 +38,7 @@ public class Main {
 
         System.out.println("----");
 
-        Dev dev2 = new Dev();
-        dev2.setNome("Gui");
+        Dev dev2 = new Dev("Gui");
         dev2.inscreverBootcamp(bootcamp);
         System.out.println("Conteudos inscritos: "+ dev2.getConteudosInscritos());
         dev2.progredir();
@@ -56,7 +55,13 @@ public class Main {
         curso1.getForum().adicionarComentario(comentario2);
 
         System.out.println("Comentarios no curso "+ curso1 +" :" +curso1.getForum().getComentarios());
+        System.out.println("Comentarios no curso "+ curso2 +" :" +curso2.getForum().getComentarios());
 
-
+        System.out.println("=== RANKING GLOBAL ===");
+        List<Dev> ranking = DevRegistry.getInstance().getRanking();
+        for (int i = 0; i < ranking.size(); i++) {
+            Dev dev = ranking.get(i);
+            System.out.println((i+1) + " - " + dev.getNome() + " - XP: " + dev.calcularTotalXp());
+        }
     }
 }
