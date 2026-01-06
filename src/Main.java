@@ -1,6 +1,4 @@
-import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 
@@ -17,18 +15,38 @@ public class Main {
         curso2.setDescricao("descricao curso js");
         curso2.setCargaHoraria(8);
 
-        Conteudo conteudo1 = new Curso();
-        Conteudo conteudo2 = new Mentoria();
-
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setTitulo("mentoria java");
         mentoria1.setDescricao("descricao mentoria java");
         mentoria1.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria1);
-        System.out.println(curso1.calcularXp());
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Dev");
+        bootcamp.setDescricao("Descricao Bootcamp Java Dev");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria1);
+
+        Dev dev1 = new Dev();
+        dev1.setNome("Pedro");
+        dev1.inscreverBootcamp(bootcamp);
+        System.out.println("Conteudos inscritos: "+ dev1.getConteudosInscritos());
+        dev1.progredir();
+        System.out.println("Conteudos Concluidos: "+ dev1.getConteudosConcluidos());
+        System.out.println("Conteudos inscritos: "+ dev1.getConteudosInscritos());
+        System.out.println("XP: "+dev1.calcularTotalXp());
+
+        System.out.println("----");
+
+        Dev dev2 = new Dev();
+        dev2.setNome("Gui");
+        dev2.inscreverBootcamp(bootcamp);
+        System.out.println("Conteudos inscritos: "+ dev2.getConteudosInscritos());
+        dev2.progredir();
+        dev2.progredir();
+        System.out.println("Conteudos Concluidos: "+ dev2.getConteudosConcluidos());
+        System.out.println("Conteudos inscritos: "+ dev2.getConteudosInscritos());
+        System.out.println("XP: "+dev2.calcularTotalXp());
 
     }
 }
