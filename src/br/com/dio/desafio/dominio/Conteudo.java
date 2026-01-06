@@ -5,6 +5,7 @@ public abstract class Conteudo {
     protected static final double XP_PADRAO = 10;
     private String titulo;
     private String descricao;
+    private Forum forum =  new Forum();
 
     public abstract double calcularXp();
 
@@ -22,5 +23,9 @@ public abstract class Conteudo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Forum getForum() {
+        return forum;
     }
 }

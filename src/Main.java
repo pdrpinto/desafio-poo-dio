@@ -48,5 +48,15 @@ public class Main {
         System.out.println("Conteudos inscritos: "+ dev2.getConteudosInscritos());
         System.out.println("XP: "+dev2.calcularTotalXp());
 
+        System.out.println("----");
+
+        Comentario comentario1 = new Comentario(dev1, "Excelente conteudo!");
+        Comentario comentario2 = new Comentario(dev2, "Conteudo bacana!");
+        curso1.getForum().adicionarComentario(comentario1);
+        curso1.getForum().adicionarComentario(comentario2);
+
+        System.out.println("Comentarios no curso "+ curso1 +" :" +curso1.getForum().getComentarios());
+
+
     }
 }

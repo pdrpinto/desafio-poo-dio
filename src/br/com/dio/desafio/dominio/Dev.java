@@ -65,6 +65,13 @@ public class Dev {
     }
 
     @Override
+    public String toString() {
+        return "Dev{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
     }
